@@ -1,0 +1,57 @@
+# dvc.yaml
+# =============================================================================
+# PURPOSE: Define the end-to-end ML pipeline as reproducible DVC stages.
+#          Run `dvc repro` to execute the full pipeline in order.
+# =============================================================================
+
+stages:
+
+  # ── Stage 1: Preprocessing ─────────────────────────────────────────────────
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - data/raw/WA_Fn-UseC_-HR-Employee-Attrition.csv
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - models/label_encoders.pkl
+      - models/feature_names.pkl
+    params:
+      - params.yaml:
+          - data.test_size
+          - data.random_state
+          - smote.random_state
+
+  # ── Stage 2: Training ───────────────────────────────────────────────────────
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - src/shap_explain.py
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - models/feature_names.pkl
+    outs:
+      - models/model.pkl
+      - shap_plots/shap_summary_bar.png
+      - shap_plots/shap_beeswarm.png
+    params:
+      - params.yaml:
+          - models.random_state
+          - xgboost_grid
+          - mlflow.experiment_name
+    metrics:
+      - metrics.json:
+          cache: false
+
+  # ── Stage 3: SHAP Explanation ───────────────────────────────────────────────
+  explain:
+    cmd: python src/shap_explain.py
+    deps:
+      - src/shap_explain.py
+      - models/model.pkl
+      - models/feature_names.pkl
+      - data/processed/test.csv
+    outs:
+      - shap_plots/test_waterfall.png
