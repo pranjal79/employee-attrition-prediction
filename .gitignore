@@ -1,0 +1,39 @@
+# Data files (tracked by DVC, not Git)
+data/
+
+# Trained model binaries
+models/
+*.pkl
+
+# Environment & secrets
+.env
+*.env
+secrets.toml
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# MLflow local runs
+mlruns/
+
+# DVC cache
+.dvc/cache
+.dvc/tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# SHAP plots (regenerated on run)
+shap_plots/
