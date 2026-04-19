@@ -1,0 +1,26 @@
+# ─── Data Parameters ─────────────────────────────────────────────
+data:
+  raw_path: data/raw/WA_Fn-UseC_-HR-Employee-Attrition.csv
+  processed_train: data/processed/train.csv
+  processed_test: data/processed/test.csv
+  test_size: 0.2
+  random_state: 42
+
+# ─── SMOTE Parameters ────────────────────────────────────────────
+smote:
+  random_state: 42
+
+# ─── Model Parameters ────────────────────────────────────────────
+models:
+  random_state: 42
+
+# ─── XGBoost GridSearch Parameters ──────────────────────────────
+xgboost_grid:
+  n_estimators: [100, 200]
+  max_depth: [3, 5, 7]
+  learning_rate: [0.01, 0.1, 0.2]
+  subsample: [0.8, 1.0]
+
+# ─── MLflow ──────────────────────────────────────────────────────
+mlflow:
+  experiment_name: employee-attrition-experiment
