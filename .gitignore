@@ -2,8 +2,8 @@
 data/
 
 # Trained model binaries
-models/
-*.pkl
+#models/
+#*.pkl
 
 # Environment & secrets
 .env
@@ -36,4 +36,9 @@ env/
 .venv/
 
 # SHAP plots (regenerated on run)
-shap_plots/
+#shap_plots/
+/data
+
+# Streamlit secrets — never commit
+.streamlit/secrets.toml
+secrets.toml
