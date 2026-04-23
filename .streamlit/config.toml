@@ -1,0 +1,17 @@
+# .streamlit/config.toml
+# Streamlit app configuration
+
+[theme]
+primaryColor       = "#007bff"
+backgroundColor    = "#f8f9fa"
+secondaryBackgroundColor = "#1e2130"
+textColor          = "#343a40"
+font               = "sans serif"
+
+[server]
+headless    = true
+port        = 8501
+enableCORS  = false
+
+[browser]
+gatherUsageStats = false
