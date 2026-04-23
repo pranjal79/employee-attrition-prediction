@@ -39,4 +39,4 @@ streamlit run app.py
 - XGBoost (Best — tuned with GridSearchCV)
 
 ## 🌐 Live App
-[Click here to open the Streamlit app](#) ← update after deployment
+[https://employee-attrition-predictionproject.streamlit.app/](#) ← update after deployment
